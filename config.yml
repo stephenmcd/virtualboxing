@@ -1,0 +1,20 @@
+
+# VirtualBox VM names mapped to their IP addresses.
+vms:
+  Ubuntu Green: 192.168.1.80
+  Ubuntu Red:   192.168.1.81
+  Ubuntu Blue:  192.168.1.70
+
+# SSH username for each of the VMS. SSH key authentication is assumed.
+ssh-user: steve
+
+# Number of processes to fork when benchmarking.
+processes: 10
+
+# Number of records to create PER PROCESS when filling with data.
+records: 10000
+
+# Database name to use for Mongo.
+mongo-db-name: steve
+
+
