@@ -57,7 +57,7 @@ Configuration
 
 All configuration is provided via `config.yml`. The main configuration
 required is each of the VM names (as entered when creating the VMs in
-VirtualBix Manager) and IP addresses for each VM. Here's the example
+VirtualBox Manager) and IP addresses for each VM. Here's the example
 `config.yml` provided:
 
     # VirtualBox VM names mapped to their IP addresses.
@@ -81,6 +81,10 @@ VirtualBix Manager) and IP addresses for each VM. Here's the example
 Running
 -------
 
+Ensure you have the required Ruby libraries installed using [Bundler][8]:
+
+    $ bundle install
+
 Actual run-time occurs via the `run.rb` script:
 
     $ ./run.rb
@@ -102,7 +106,7 @@ The following list of items are suggested for further exploration:
 * Use a load balancer as the entry point for connecting to the
   Riak cluster
 * Set up MongoDB Replica Sets
-* Benchmark different [storage backends for Riak][8]
+* Benchmark different [storage backends for Riak][9]
 * Benchmark existing test with indexes created
 * Benchmark searching
 * Benchmark deleting
@@ -114,4 +118,5 @@ The following list of items are suggested for further exploration:
 [5]: http://www.laubenheimer.net/ssh-keys.shtml
 [6]: http://www.mongodb.org/display/DOCS/Quickstart+Unix
 [7]: http://wiki.basho.com/Installing-on-Debian-and-Ubuntu.html
-[8]: http://wiki.basho.com/Storage-Backends.html
+[8]: http://gembundler.com/
+[9]: http://wiki.basho.com/Storage-Backends.html
