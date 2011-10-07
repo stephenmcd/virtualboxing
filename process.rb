@@ -5,6 +5,7 @@ def process(description, processes)
   start = Time.now
   processes.times { |i| fork { yield i } }
   processes.times { Process.wait }
-  puts "#{description} took #{(Time.now - start).round.to_f / 10**2} seconds to run"
+  delta = ((Time.now - start) * 10**2).round.to_f / 10**2
+  puts "#{description} took #{delta} seconds to run"
 end
 
