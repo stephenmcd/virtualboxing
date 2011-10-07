@@ -17,10 +17,11 @@ module Riak
   end
 
   # Fills Riak with data for the given host.
-  def Riak.fill(description, processes, records, host)
-    process(description, processes) do |i|
-      bucket = Riak::Client.new(:host => host, :protocol => "pbc").bucket i.to_s
-      records.times do |n|
+  def Riak.fill(options)
+    process(options[:description], options[:processes]) do |i|
+      connection = Riak::Client.new(:host => options[:host], :protocol => "pbc")
+      bucket = connection.bucket i.to_s
+      options[:records].times do |n|
         item = bucket.get_or_new n.to_s
         item.content_type = "text/json"
         item.data = {

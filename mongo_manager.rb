@@ -15,10 +15,11 @@ module Mongo
   end
 
   # Fills Mongo with data for the given host.
-  def Mongo.fill(description, processes, records, host, db_name)
-    process(description, processes) do |i|
-      collection = Mongo::Connection.new(host).db(db_name)["0"]
-      records.times do |n|
+  def Mongo.fill(options)
+    process(options[:description], options[:processes]) do |i|
+      connection = Mongo::Connection.new(options[:host])
+      collection = connection.db(options[:db])[i.to_s]
+      options[:records].times do |n|
         collection.update({"_id" => n.to_s}, {
           "name" => "name-#{rand(100)}",
           "email" => "email-#{n}"
