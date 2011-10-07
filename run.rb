@@ -12,6 +12,8 @@ vms = config["vms"].map { |name, host| VM.new name, host, config["ssh-user"] }
 # DBs and clusters are stopped.
 puts "Starting: VMs"
 vms.each { |vm| vm.start }
+puts "Waiting for network."
+vms.each { |vm| vm.connect }
 puts "Stopping: Riak Cluster"
 Riak.stop_cluster vms
 Riak.stop *vms
@@ -36,7 +38,7 @@ Riak.fill :description => "Create Riak Buckets with a single node",
 # Start the Riak Cluster and fill it with data.
 puts "Starting: Riak Cluster"
 Riak.start_cluster vms
-Riak.fill :description => "Create Riak Buckets with #{vms.size} node",
+Riak.fill :description => "Create Riak Buckets with #{vms.size} nodes",
           :processes   => config["processes"],
           :records     => config["records"],
           :host        => vms.first.host
