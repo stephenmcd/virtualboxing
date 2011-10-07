@@ -37,7 +37,7 @@ module Riak
   # to the first VM.
   def Riak.start_cluster(vms)
     Riak.start *vms
-    vms[1..-1].each { |vm| vm.run("riak-admin join #{vm.name}") }
+    vms[1..-1].each { |vm| vm.run("riak-admin join riak@#{vms.first.host}") }
     vms.first.run("riak-admin member_status") do |out|
       # member_status will report all nodes as valid once they've
       # joined but are still moving data. The pending column for each
