@@ -1,6 +1,8 @@
 Virtual Boxing
 ==============
 
+Created by [Stephen McDonald](http://twitter.com/stephen_mcd)
+
 virtualboxing is a set of utilities for comparing timings on bulk
 operations across various databases in a distributed environment. It
 consists of routines for controlling multiple [VirtualBox][1] instances
